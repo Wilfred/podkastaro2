@@ -1,5 +1,6 @@
 from django.db import models
 
+import libs.feedparser
 from utils import eo_slugify
 
 class PodcastManager(models.Manager):
@@ -28,6 +29,17 @@ class RssFeed(models.Model):
 
     def __unicode__(self):
         return "%s %s" % (self.podcast.name, self.url)
+
+    def update_episodes(self):
+        rss_feed = libs.feedparser.parse(self.url)
+
+        for entry in rss_feed['entries']:
+            title = entry['title']
+            summary = entry['summary']
+
+            Episode(podcast=self.podcast, title=title,
+                    raw_description=summary).save()
+
 
 class Episode(models.Model):
     podcast = models.ForeignKey(Podcast)

@@ -3,7 +3,7 @@ from django.template import RequestContext
 from django.http import HttpResponse
 
 from models import Podcast, RssFeed, Episode
-import libs.feedparser
+
 
 def index(request):
     return render_to_response('page.html', {}, RequestContext(request))
@@ -21,20 +21,6 @@ def check_feeds(request):
     feeds = RssFeed.objects.all()
 
     for feed in feeds:
-        for episode in get_episodes_from_feed(feed):
-            episode.save()
+        feed.update_episodes()
 
     return HttpResponse('saved.')
-
-def get_episodes_from_feed(feed):
-    rss_feed = libs.feedparser.parse(feed.url)
-
-    episodes = []
-    for entry in rss_feed['entries']:
-        title = entry['title']
-        summary = entry['summary']
-
-        episodes.append(Episode(podcast=feed.podcast, title=title,
-                                raw_description=summary))
-        
-    return episodes
