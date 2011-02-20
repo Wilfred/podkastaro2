@@ -19,14 +19,25 @@
 <div class="gap"></div>
 
 {# podcast episodes #}
-{% for episode in episodes %}
+{% for episode, attachments in episodes %}
 <div class="document">
 	<div>&nbsp;</div>
         <div class="dochead">
                 <span class="dhead">{{ episode.title }}</span>
 	</div>
 	<div class="dcontent">
-		{{ episode.raw_description }}
+		<p>{{ episode.raw_description }}</p>
+
+		{% for attachment in attachments %}
+		<object type="application/x-shockwave-flash"
+			data="/static/flash/dewplayer.swf" width="200"
+			height="20" name="dewplayerclassic">
+			<param name="movie" value="dewplayer.swf">
+			<param name="flashvars" value="mp3={{ attachment.url }}">
+		</object>
+		{% endfor %}
+
+                <div>&nbsp;</div>
 	</div>
 </div>
 
