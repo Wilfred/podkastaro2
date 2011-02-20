@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-import feedparser
+import libs.feedparser
 
 # active podcasts only
 podcasts = [('http://www2.polskieradio.pl/podcast/39/podcast.xml', 'Pola Radio'),
@@ -17,12 +17,12 @@ podcasts = [('http://www2.polskieradio.pl/podcast/39/podcast.xml', 'Pola Radio')
             ('http://www.panamaradio.org/podkastoj/rss.xml', 'Panama Radio'),
             ("http://feeds.feedburner.com/vej", u'Voĉoj el Japanio')]
 
-feed = feedparser.parse(podcasts[-1][0])
+feed = libs.feedparser.parse(podcasts[-1][0])
 
 for entry in feed['entries']:
     title = entry['title']
     summary = entry['summary']
-    multimedia_items = entry['media_content']
+    multimedia_items = entry.get('media_content', [])
 
 print (title + '\n')
 print (summary + '\n')
