@@ -43,13 +43,23 @@
                 			<div id="mostpop">
                 				<div class="lthead"><span>Podkastoj</span></div>
 						<!--rtposts starts-->
+
+						{% load eo_slugify %}
 						<div class="rtposts">
 							<ul>
+								{% for podcasts in podcasts %}
+                                                                <li>
+									<a href="/podkasto/{{ podcast.name|eo_slugify }}">{{ podcast.name }}</a>
+                                                                </li>
+                                                                <li>
+                                                                        <a href="#">{{ podcast.name }}</a>
+                                                                </li>
 								<li><a href="#">3ZZZ Radio</a></li>
 								<li><a href="#">Podkasto Per Poŝtelefono</a></li>
 								<li><a href="#">Adipisci</a></li>
 								<li><a href="#">Numquam</a></li>
 								<li><a href="#">Vel Illium</a></li>
+								{% endfor %}
 							</ul>
 						</div>
 						<!--rtposts ends-->
