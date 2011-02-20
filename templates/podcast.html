@@ -1,4 +1,5 @@
 {% extends "base.html" %}
+{% load date_filters %}
 
 {% block episodes %}
 
@@ -25,6 +26,11 @@
         <div class="dochead">
                 <span class="dhead">{{ episode.title }}</span>
 	</div>
+
+	<div>
+                <span class="post">{{ episode.podcast.name }} | {{ episode.time|eo_date }}</span>
+	</div>
+
 	<div class="dcontent">
 		<p>{{ episode.raw_description }}</p>
 
