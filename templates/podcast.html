@@ -35,12 +35,14 @@
 		<p>{{ episode.raw_description }}</p>
 
 		{% for attachment in attachments %}
+		<p>
 		<object type="application/x-shockwave-flash"
 			data="/static/flash/dewplayer.swf" width="200"
 			height="20" name="dewplayerclassic">
 			<param name="movie" value="dewplayer.swf">
 			<param name="flashvars" value="mp3={{ attachment.url }}">
 		</object>
+		<p>
 		{% endfor %}
 
                 <div>&nbsp;</div>
