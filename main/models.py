@@ -3,7 +3,7 @@ from datetime import datetime
 import calendar
 
 import libs.feedparser
-from utils import eo_slugify
+from templatetags.eo_slugify import eo_slugify
 
 class PodcastManager(models.Manager):
     def get_by_slug(self, slug):
