@@ -1,4 +1,8 @@
 #!/usr/bin/env python
+
+from colour_logging import add_coloring
+add_coloring()
+
 from django.core.management import execute_manager
 try:
     import settings # Assumed to be in the same directory.
