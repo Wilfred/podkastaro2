@@ -2,3 +2,7 @@ cron:
 - description: keep alive
   url: /
   schedule: every 2 minutes
+
+- description: thrice daily rss check
+  url: /cron/check_feeds
+  schedule: every 8 hours
