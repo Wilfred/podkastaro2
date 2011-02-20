@@ -47,7 +47,7 @@
 						{% load eo_slugify %}
 						<div class="rtposts">
 							<ul>
-								{% for podcasts in podcasts %}
+								{% for podcast in podcasts %}
                                                                 <li>
 									<a href="/podkasto/{{ podcast.name|eo_slugify }}">{{ podcast.name }}</a>
                                                                 </li>
