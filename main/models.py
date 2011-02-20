@@ -18,9 +18,15 @@ class Podcast(models.Model):
 
     objects = PodcastManager()
 
+class RssFeed(models.Model):
+    # one podcast can have several RSS Feeds
+    podcast = models.ForeignKey(Podcast)
+    url = models.URLField()
+
 class Episode(models.Model):
     podcast = models.ForeignKey(Podcast)
     raw_description = models.TextField()
 
 class MultimediaFile(models.Model):
+    # one episode can have several files
     pass
