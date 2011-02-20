@@ -7,6 +7,6 @@ handler500 = 'djangotoolbox.errorviews.server_error'
 
 urlpatterns = patterns('',
     ('^_ah/warmup$', 'djangoappengine.views.warmup'),
-    ('^admin', include(admin.site.urls)),
+    ('^admin/', include(admin.site.urls)),
     ('^$', 'main.views.index'),
 )
