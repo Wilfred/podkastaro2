@@ -37,8 +37,24 @@ class RssFeed(models.Model):
             title = entry['title']
             summary = entry['summary']
 
-            Episode(podcast=self.podcast, title=title,
-                    raw_description=summary).save()
+            # create or update episode
+            try:
+                # if already exists, update
+                episode = Episode.objects.get(title=title)
+                episode.podcast = self.podcast
+                episode.raw_description = summary
+            except Episode.DoesNotExist:
+                # create new
+                episode = Episode(podcast=self.podcast, title=title,
+                                  raw_description=summary)
+            episode.save()
+
+            # create or update attachments
+            for attachment in entry.get('links', []):
+                if attachment['type'] == 'audio/mpeg':
+                    url = attachment['url']
+                    MultimediaFile.objects.get_or_create(episode=episode,
+                                                         remote_path=url)
 
 
 class Episode(models.Model):
@@ -50,6 +66,11 @@ class Episode(models.Model):
     def __unicode__(self):
         return "%s (%s)" % (self.title, self.podcast.name)
 
+    
 class MultimediaFile(models.Model):
     # one episode can have several files
-    pass
+    episode = models.ForeignKey(Episode)
+    remote_path = models.URLField()
+
+    def __unicode__(self):
+        return "%s: %s" % (self.episode.title, self.remote_path)
