@@ -54,7 +54,7 @@ class RssFeed(models.Model):
                 if attachment['type'] == 'audio/mpeg':
                     url = attachment['url']
                     MultimediaFile.objects.get_or_create(episode=episode,
-                                                         remote_path=url)
+                                                         url=url)
 
 
 class Episode(models.Model):
@@ -70,7 +70,7 @@ class Episode(models.Model):
 class MultimediaFile(models.Model):
     # one episode can have several files
     episode = models.ForeignKey(Episode)
-    remote_path = models.URLField()
+    url = models.URLField()
 
     def __unicode__(self):
-        return "%s: %s" % (self.episode.title, self.remote_path)
+        return "%s: %s" % (self.episode.title, self.url)
