@@ -10,7 +10,9 @@ def index(request):
 
 def podcast(request, podcast_name):
     podcast = Podcast.objects.get_by_slug(podcast_name)
-    template_vars = {'podcast': podcast}
+    episodes = Episode.objects.filter(podcast=podcast)
+
+    template_vars = {'podcast': podcast, 'episodes': episodes}
 
     return render_to_response('podcast.html', template_vars,
                               RequestContext(request))
