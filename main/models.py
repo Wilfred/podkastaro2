@@ -1,7 +1,7 @@
 from django.db import models
 
 class Podcast(models.Model):
-    name = models.CharField(max_lenth=400)
+    name = models.CharField(max_length=400)
     description = models.TextField()
 
 class Episode(models.Model):
