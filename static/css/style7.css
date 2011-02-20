@@ -104,10 +104,13 @@ img{border:0;}
 }
 
 .bubble{
-	background:url(../images/bubble.png) no-repeat bottom right;
+	background: #689E18;
 	height:39px;
 	margin-top:67px;
 	margin-right: 15px;
+        float: right;
+        position: relative;
+        top: 15px;
 }
 
 .ltposts ul{

@@ -18,6 +18,7 @@ class PodcastManager(models.Manager):
 class Podcast(models.Model):
     name = models.CharField(max_length=400)
     description = models.TextField()
+    website = models.URLField()
 
     objects = PodcastManager()
 
