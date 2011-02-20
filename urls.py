@@ -9,5 +9,6 @@ urlpatterns = patterns('',
     ('^_ah/warmup$', 'djangoappengine.views.warmup'),
     ('^admin/', include(admin.site.urls)),
     ('^$', 'main.views.index'),
-    ('^podkasto/(?P<podcast_name>.+)', 'main.views.podcast')
+    ('^podkasto/(?P<podcast_name>.+)', 'main.views.podcast'),
+    ('^cron/check_feeds', 'main.views.check_feeds'),
 )

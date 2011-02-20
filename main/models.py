@@ -28,6 +28,8 @@ class RssFeed(models.Model):
 
 class Episode(models.Model):
     podcast = models.ForeignKey(Podcast)
+
+    title = models.CharField(max_length=400)
     raw_description = models.TextField()
 
 class MultimediaFile(models.Model):

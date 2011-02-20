@@ -21,7 +21,17 @@ indexes:
 # automatically uploaded to the admin console when you next deploy
 # your application using appcfg.py.
 
+- kind: main_episode
+  properties:
+  - name: __key__
+    direction: desc
+
 - kind: main_podcast
+  properties:
+  - name: __key__
+    direction: desc
+
+- kind: main_rssfeed
   properties:
   - name: __key__
     direction: desc
