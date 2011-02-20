@@ -26,6 +26,11 @@ indexes:
   - name: __key__
     direction: desc
 
+- kind: main_multimediafile
+  properties:
+  - name: __key__
+    direction: desc
+
 - kind: main_podcast
   properties:
   - name: __key__
