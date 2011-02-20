@@ -1,4 +1,6 @@
 from django.db import models
+from datetime import datetime
+import calendar
 
 import libs.feedparser
 from utils import eo_slugify
@@ -36,6 +38,7 @@ class RssFeed(models.Model):
         for entry in rss_feed['entries']:
             title = entry['title']
             summary = entry['summary']
+            time = datetime.fromtimestamp(calendar.timegm(entry['updated_parsed']))
 
             # create or update episode
             try:
@@ -43,10 +46,12 @@ class RssFeed(models.Model):
                 episode = Episode.objects.get(title=title)
                 episode.podcast = self.podcast
                 episode.raw_description = summary
+                episode.time = time
             except Episode.DoesNotExist:
                 # create new
                 episode = Episode(podcast=self.podcast, title=title,
-                                  raw_description=summary)
+                                  raw_description=summary,
+                                  time=time)
             episode.save()
 
             # create or update attachments
@@ -62,6 +67,7 @@ class Episode(models.Model):
 
     title = models.CharField(max_length=400)
     raw_description = models.TextField()
+    time = models.DateTimeField()
 
     def __unicode__(self):
         return "%s (%s)" % (self.title, self.podcast.name)
