@@ -18,6 +18,9 @@ class Podcast(models.Model):
 
     objects = PodcastManager()
 
+    def __unicode__(self):
+        return self.name
+
 class RssFeed(models.Model):
     # one podcast can have several RSS Feeds
     podcast = models.ForeignKey(Podcast)
