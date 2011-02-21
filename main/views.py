@@ -41,6 +41,7 @@ def index(request):
     return render_to_response('index.html', template_vars,
                               RequestContext(request))
 
+
 def podcast(request, podcast_name):
     podcast = Podcast.objects.get_by_slug(podcast_name)
     episodes = Episode.objects.filter(podcast=podcast)
@@ -50,7 +51,10 @@ def podcast(request, podcast_name):
         episodes_with_multimedia.append((episode,
                                          MultimediaFile.objects.filter(episode=episode)))
 
-    template_vars = {'podcast': podcast, 'episodes': episodes_with_multimedia}
+    page_of_episodes = get_paginated_content(request,
+                                             episodes_with_multimedia)
+
+    template_vars = {'podcast': podcast, 'episodes': page_of_episodes}
 
     return render_to_response('podcast.html', template_vars,
                               RequestContext(request))

@@ -28,7 +28,7 @@
 <div class="gap"></div>
 
 {# podcast episodes #}
-{% for episode, attachments in episodes %}
+{% for episode, attachments in episodes.object_list %}
 <div class="document">
 	<div>&nbsp;</div>
         <div class="dochead">
@@ -62,5 +62,26 @@
 <div class="rtboxbg">&nbsp;</div>
 <div class="gap"></div>
 {% endfor %}
+
+<div class="description dcontent pagenumber">
+	<div>&nbsp;</div>
+	<div class="dcontent">
+        {% if episodes.has_previous %}
+            <a href="?page={{ episodes.previous_page_number }}">Pli novaj</a>
+        {% endif %}
+
+        {% if episodes.has_previous and episodes.has_next %}
+		&mdash;
+	{% endif %}
+
+        {% if episodes.has_next %}
+            <a href="?paĝo={{ episodes.next_page_number }}">Pli malnovaj</a>
+        {% endif %}
+	</div>
+
+</div>
+
+<div class="rtboxbg">&nbsp;</div>
+<div class="gap"></div>
 
 {% endblock %}
