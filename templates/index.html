@@ -36,19 +36,19 @@
 <div class="gap"></div>
 {% endfor %}
 
-<div class="description pagenumber">
+<div class="description dcontent pagenumber">
 	<div>&nbsp;</div>
 	<div class="dcontent">
         {% if episodes.has_previous %}
-            <a href="?page={{ episodes.previous_page_number }}">previous</a>
+            <a href="?page={{ episodes.previous_page_number }}">Pli novaj</a>
         {% endif %}
 
-        <span class="current">
-            Page {{ episodes.number }} of {{ episodes.paginator.num_pages }}.
-        </span>
+        {% if episodes.has_previous and episodes.has_next %}
+		&mdash;
+	{% endif %}
 
         {% if episodes.has_next %}
-            <a href="?paĝo={{ episodes.next_page_number }}">next</a>
+            <a href="?paĝo={{ episodes.next_page_number }}">Pli malnovaj</a>
         {% endif %}
 	</div>
 
