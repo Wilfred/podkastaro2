@@ -6,7 +6,7 @@ from models import Podcast, RssFeed, Episode, MultimediaFile
 
 
 def index(request):
-    episodes = Episode.objects.order_by('-time')
+    episodes = Episode.objects.all()
 
     episodes_with_multimedia = []
     for episode in episodes:

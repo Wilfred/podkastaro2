@@ -82,6 +82,9 @@ class Episode(models.Model):
     raw_description = models.TextField()
     time = models.DateTimeField()
 
+    class Meta:
+        ordering = ['-time']
+
     def __unicode__(self):
         return "%s (%s)" % (self.title, self.podcast.name)
 
