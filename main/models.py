@@ -1,6 +1,7 @@
 from django.db import models
 from datetime import datetime
 import calendar
+import logging
 
 import libs.feedparser
 from templatetags.eo_slugify import eo_slugify
@@ -39,7 +40,16 @@ class RssFeed(models.Model):
         for entry in rss_feed['entries']:
             title = entry['title']
             summary = entry['summary']
-            time = datetime.fromtimestamp(calendar.timegm(entry['updated_parsed']))
+
+            time_struct = entry['updated_parsed']
+            if time_struct:
+                time = datetime.fromtimestamp(calendar.timegm(time_struct))
+            else:
+                # fortunately very rare that podcasts don't have dates, but can happen
+                # we choose today, but log the error for the admin check
+                logging.error('Episode %s (from %s) had no time, assuming today.' \
+                                  % (title, self.podcast.name))
+                time = datetime.now()
 
             # create or update episode
             try:
