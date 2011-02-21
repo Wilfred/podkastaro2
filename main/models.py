@@ -47,7 +47,6 @@ class RssFeed(models.Model):
                 episode = Episode.objects.get(title=title)
                 episode.podcast = self.podcast
                 episode.raw_description = summary
-                episode.time = time
             except Episode.DoesNotExist:
                 # create new
                 episode = Episode(podcast=self.podcast, title=title,
