@@ -23,6 +23,9 @@ class Podcast(models.Model):
 
     objects = PodcastManager()
 
+    class Meta:
+        ordering = ['name']
+
     def __unicode__(self):
         return self.name
 
