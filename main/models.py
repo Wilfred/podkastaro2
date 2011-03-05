@@ -70,8 +70,12 @@ class RssFeed(models.Model):
 
             # create or update attachments
             for attachment in entry.get('links', []):
-                if attachment['type'] == 'audio/mpeg':
+                if attachment.get('type', 'unknown') == 'audio/mpeg':
                     url = attachment['url']
+                    MultimediaFile.objects.get_or_create(episode=episode,
+                                                         url=url)
+                elif attachment.get('href', '').endswith('.mp3'):
+                    url = attachment['href']
                     MultimediaFile.objects.get_or_create(episode=episode,
                                                          url=url)
 
