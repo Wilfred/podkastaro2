@@ -12,6 +12,11 @@
 {% block content %}
 <div id="content-main">
 
+<p>
+  This is the admin site for Podkastaro. To explicitly update the
+  feeds, <a href="/cron/check_feeds">click here</a>.
+</p>
+
 {% if app_list %}
     {% for app in app_list %}
         <div class="module">
