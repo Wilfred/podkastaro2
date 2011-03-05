@@ -5,6 +5,7 @@ import logging
 
 import libs.feedparser
 from templatetags.eo_slugify import eo_slugify
+from libs.BeautifulSoup import BeautifulSoup
 
 class PodcastManager(models.Manager):
     def get_by_slug(self, slug):
@@ -87,6 +88,28 @@ class Episode(models.Model):
 
     def __unicode__(self):
         return "%s (%s)" % (self.title, self.podcast.name)
+
+    def get_pretty_description(self):
+        # already sanitised by feedparser, but we want to do some beautifying
+        def strip_inline_styles(soup):
+            for node in soup.findAll():
+                del node['style']
+
+        def remove_posterous_junk(soup):
+            # remove mp3 image which is in div.p_audio_embed
+            for node in soup.findAll('div', 'p_audio_embed'):
+                node.extract()
+
+            # remove 'permalink' etc trailer
+            for node in soup.findAll(text='Permalink'):
+                node.parent.parent.extract()
+
+        soup = BeautifulSoup(self.raw_description)
+
+        strip_inline_styles(soup)
+        remove_posterous_junk(soup)
+
+        return str(soup)
 
     
 class MultimediaFile(models.Model):

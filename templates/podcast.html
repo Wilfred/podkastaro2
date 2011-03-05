@@ -40,7 +40,7 @@
 	</div>
 
 	<div class="dcontent">
-		<p>{{ episode.raw_description }}</p>
+		{{ episode.get_pretty_description|safe }}
 
 		{% for attachment in attachments %}
 		<p>
