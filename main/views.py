@@ -42,7 +42,7 @@ def index(request):
                               RequestContext(request))
 
 
-def podcast(request, podcast_name):
+def view_podcast(request, podcast_name):
     podcast = Podcast.objects.get_by_slug(podcast_name)
     episodes = Episode.objects.filter(podcast=podcast)
 
