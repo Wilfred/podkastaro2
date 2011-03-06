@@ -108,6 +108,10 @@ class Episode(models.Model):
             for node in soup.findAll(text='Permalink'):
                 node.parent.parent.extract()
 
+            # remove feedburner tracker images
+            for node in soup.findAll('img'):
+                node.extract()
+
         soup = BeautifulSoup(self.raw_description)
 
         strip_inline_styles(soup)
