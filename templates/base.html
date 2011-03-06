@@ -133,25 +133,16 @@
 					<div id='sidebar-wrapper'>
 						<div class='sidebar section' id='sidebar'>
 							<div class='widget Label' id='Label1'>
-								<h2>Categories</h2>
-								<div class='widget-content list-label-widget-content'>
-									<ul>
-										<li>
-											<a dir='ltr' href='http://2plus-demo-dantearaujo.blogspot.com/search/label/Category%201'>Category 1</a>
+								<h2>Podkastoj</h2>
 
-											<span dir='ltr'>(1)</span>
-										</li>
-										<li>
-											<a dir='ltr' href='http://2plus-demo-dantearaujo.blogspot.com/search/label/Category%202'>Category 2</a>
-											<span dir='ltr'>(1)</span>
-										</li>
-										<li>
-											<a dir='ltr' href='http://2plus-demo-dantearaujo.blogspot.com/search/label/Category%203'>Category 3</a>
-											<span dir='ltr'>(1)</span>
-										</li>
-									</ul>
-									<div class='clear'></div>
-								</div>
+								{% load eo_slugify %}
+								<ul>
+								{% for podcast in podcasts %}
+								<li>
+									<a href="/podkasto/{{ podcast.name|eo_slugify }}">{{ podcast.name }}</a>
+								</li>
+								{% endfor %}
+								</ul>
 							</div>
 						
 						</div>
