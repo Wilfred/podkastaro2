@@ -1,0 +1,9 @@
+Podkastaro 2 is a port of the original PHP Podkastaro to Django
+non-rel on App Engine.
+
+Podkastaro is a site that aggregates every Esperanto-language podcast
+that I'm aware of. It uses feedparser to fetch the feeds and
+BeautifulSoup to remove unwanted text in the descriptions.
+
+The styling is a port of 2Plus, a blogger template developed by Dante
+and Klodian.
