@@ -1,1 +1,38 @@
 {% extends "base.html" %}
+
+{% load date_filters %}
+
+{% block episodes %}
+
+{% for episode, attachments in episodes.object_list %}
+<div class='post hentry uncustomized-post-template'>
+	<h3 class='post-title entry-title'>
+		{{ episode.title }}
+	</h3>
+
+	<div class='post-footer'>
+		<div class='post-footer-line post-footer-line-1'>
+			<span class='post-author vcard'>
+				{{ episode.podcast.name }} | {{ episode.time|eo_date }}
+			</span>
+		</div>
+	</div>
+
+	<div class='post-body entry-content'>
+		{{ episode.get_pretty_description|safe }}
+	</div>
+
+	{% for attachment in attachments %}
+	<p>
+		<object type="application/x-shockwave-flash"
+			data="/static/flash/dewplayer.swf" width="200"
+			height="20" name="dewplayerclassic">
+			<param name="movie" value="dewplayer.swf">
+			<param name="flashvars" value="mp3={{ attachment.url }}">
+		</object>
+	</p>
+	{% endfor %}
+</div>
+{% endfor %}
+
+{% endblock %}
