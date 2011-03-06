@@ -1,7 +1,9 @@
+# -*- coding: utf-8 -*-
 from django.db import models
 from datetime import datetime
 import calendar
 import logging
+import re
 
 import libs.feedparser
 from templatetags.eo_slugify import eo_slugify
@@ -116,10 +118,20 @@ class Episode(models.Model):
             for node in soup.findAll('img'):
                 node.extract()
 
+        def remove_varsovia_junk(soup):
+            for node in soup.findAll('a', text=re.compile(u'Elŝutu')):
+                node.parent.extract()
+            for node in soup.findAll('a', text=re.compile(u'Download audio file')):
+                node.parent.extract()
+
         soup = BeautifulSoup(self.raw_description)
 
         strip_inline_styles(soup)
-        remove_posterous_junk(soup)
+
+        if self.podcast.name == u'Voĉoj el Japanio':
+            remove_posterous_junk(soup)
+        if self.podcast.name == 'Varsovia Vento':
+            remove_varsovia_junk(soup)
 
         return str(soup)
 
