@@ -13,8 +13,10 @@
 	<body>
 		<div id='navigation'>
 			<ul class='navigation'>
-				<li class='homebtn'><a href='/'>Hejmo</a></li>
+				{% block top_menu %}
+				<li class='navitem'><a href='/'>Hejmo</a></li>
 				<li class='navitem'><a href='#'>Pri Podkastaro</a></li>
+				{% endblock %}
 			</ul>
 		</div>
 
