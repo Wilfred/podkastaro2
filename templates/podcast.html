@@ -24,64 +24,35 @@
 
 </div>
 
-<div class="rtboxbg">&nbsp;</div>
-<div class="gap"></div>
-
-{# podcast episodes #}
 {% for episode, attachments in episodes.object_list %}
-<div class="document">
-	<div>&nbsp;</div>
-        <div class="dochead">
-                <span class="dhead">{{ episode.title }}</span>
+<div class='post hentry uncustomized-post-template'>
+	<h3 class='post-title entry-title'>
+		{{ episode.title }}
+	</h3>
+
+	<div class='post-footer'>
+		<div class='post-footer-line post-footer-line-1'>
+			<span class='post-author vcard'>
+				{{ episode.podcast.name }} | {{ episode.time|eo_date }}
+			</span>
+		</div>
 	</div>
 
-	<div>
-                <span class="post">{{ episode.podcast.name }} | {{ episode.time|eo_date }}</span>
-	</div>
-
-	<div class="dcontent">
+	<div class='post-body entry-content'>
 		{{ episode.get_pretty_description|safe }}
+	</div>
 
-		{% for attachment in attachments %}
-		<p>
+	{% for attachment in attachments %}
+	<p>
 		<object type="application/x-shockwave-flash"
 			data="/static/flash/dewplayer.swf" width="200"
 			height="20" name="dewplayerclassic">
 			<param name="movie" value="dewplayer.swf">
 			<param name="flashvars" value="mp3={{ attachment.url }}">
 		</object>
-		<p>
-		{% endfor %}
-
-                <div>&nbsp;</div>
-
-        </div>
-
+	</p>
+	{% endfor %}
 </div>
-
-<div class="rtboxbg">&nbsp;</div>
-<div class="gap"></div>
 {% endfor %}
-
-<div class="description dcontent pagenumber">
-	<div>&nbsp;</div>
-	<div class="dcontent">
-        {% if episodes.has_previous %}
-            <a href="?page={{ episodes.previous_page_number }}">Pli novaj</a>
-        {% endif %}
-
-        {% if episodes.has_previous and episodes.has_next %}
-		&mdash;
-	{% endif %}
-
-        {% if episodes.has_next %}
-            <a href="?paĝo={{ episodes.next_page_number }}">Pli malnovaj</a>
-        {% endif %}
-	</div>
-
-</div>
-
-<div class="rtboxbg">&nbsp;</div>
-<div class="gap"></div>
 
 {% endblock %}
