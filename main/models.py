@@ -59,7 +59,7 @@ class RssFeed(models.Model):
             try:
                 # if already exists, update
                 episode = Episode.objects.get(title=title,
-                                              podcast=self.podcast)
+                                              podcast=self.podcast, time=time)
                 episode.raw_description = summary
             except Episode.DoesNotExist:
                 # create new
