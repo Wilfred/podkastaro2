@@ -1,56 +1,6 @@
- /*
------------------------------------------------
-Blogger Template Style
-Name:     2Plus
-Designers: Dante Araujo & Klodian
-URL:      www.dantearaujo.net / www.deluxetemplates.net
-Date:     May 2009
------------------------------------------------ */
 #navbar-iframe {
 display: none !important;
 }
-/* Variable definitions
-====================
-<Variable name="bgcolor" description="Page Background Color"
-type="color" default="#fff">
-<Variable name="textcolor" description="Text Color"
-type="color" default="#333">
-<Variable name="linkcolor" description="Link Color"
-type="color" default="#58a">
-<Variable name="pagetitlecolor" description="Blog Title Color"
-type="color" default="#fff">
-<Variable name="descriptioncolor" description="Blog Description Color"
-type="color" default="#999">
-<Variable name="titlecolor" description="Post Title Color"
-type="color" default="#c60">
-<Variable name="bordercolor" description="Border Color"
-type="color" default="#ccc">
-<Variable name="sidebarcolor" description="Sidebar Title Color"
-type="color" default="#999">
-<Variable name="sidebartextcolor" description="Sidebar Text Color"
-type="color" default="#666">
-<Variable name="visitedlinkcolor" description="Visited Link Color"
-type="color" default="#999">
-<Variable name="bodyfont" description="Text Font"
-type="font" default="normal normal 100% Georgia, Serif">
-<Variable name="headerfont" description="Sidebar Title Font"
-type="font"
-default="normal normal 78% 'Trebuchet MS',Trebuchet,Arial,Verdana,Sans-serif">
-<Variable name="pagetitlefont" description="Blog Title Font"
-type="font"
-default="normal normal 200% Georgia, Serif">
-<Variable name="descriptionfont" description="Blog Description Font"
-type="font"
-default="normal normal 78% 'Trebuchet MS', Trebuchet, Arial, Verdana, Sans-serif">
-<Variable name="postfooterfont" description="Post Footer Font"
-type="font"
-default="normal normal 78% 'Trebuchet MS', Trebuchet, Arial, Verdana, Sans-serif">
-<Variable name="startSide" description="Side where text starts in blog language"
-type="automatic" default="left">
-<Variable name="endSide" description="Side where text ends in blog language"
-type="automatic" default="right">
-*/
-/* Use this with templates/template-twocol.html */
 body {
 background:white url(/static/images/background.png) repeat-y scroll 0 0;
 color:#333333;
