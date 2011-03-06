@@ -46,10 +46,12 @@ class RssFeed(models.Model):
         for entry in rss_feed['entries']:
             title = entry['title']
 
-            if self.podcast.name == 'Varsovia Vento':
+            summary = entry['summary']
+
+            if summary.endswith('[...]'):
+                # if summary has been truncated
+                # there is probably a full html description as <content> instead
                 summary = entry['content'][0]['value']
-            else:
-                summary = entry['summary']
 
             time_struct = entry['updated_parsed']
             if time_struct:
