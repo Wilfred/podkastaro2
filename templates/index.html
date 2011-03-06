@@ -1,6 +1,8 @@
 {% extends "base.html" %}
 
 {% load date_filters %}
+{% load eo_slugify %}
+
 
 {% block episodes %}
 
@@ -13,7 +15,8 @@
 	<div class='post-footer'>
 		<div class='post-footer-line post-footer-line-1'>
 			<span class='post-author vcard'>
-				{{ episode.podcast.name }} | {{ episode.time|eo_date }}
+				<a href="/podkasto/{{ episode.podcast.name|eo_slugify }}">{{ episode.podcast.name }}</a>
+                                | {{ episode.time|eo_date }}
 			</span>
 		</div>
 	</div>
