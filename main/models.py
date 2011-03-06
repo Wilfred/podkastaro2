@@ -43,7 +43,11 @@ class RssFeed(models.Model):
 
         for entry in rss_feed['entries']:
             title = entry['title']
-            summary = entry['summary']
+
+            if self.podcast.name == 'Varsovia Vento':
+                summary = entry['content'][0]['value']
+            else:
+                summary = entry['summary']
 
             time_struct = entry['updated_parsed']
             if time_struct:
