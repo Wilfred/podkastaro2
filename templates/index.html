@@ -19,7 +19,9 @@
 	<div class='post-footer'>
 		<div class='post-footer-line post-footer-line-1'>
 			<span class='post-author vcard'>
-				<a href="/podkasto/{{ episode.podcast.name|eo_slugify }}">{{ episode.podcast.name }}</a>
+				<a href="/podkasto/{{ episode.podcast.name|eo_slugify }}">
+					{{ episode.podcast.name }}
+				</a>
                                 | {{ episode.time|eo_date }}
 			</span>
 		</div>
