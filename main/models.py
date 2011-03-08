@@ -136,7 +136,7 @@ class Episode(models.Model):
             remove_varsovia_junk(soup)
         elif self.podcast.name == 'Radio Vatikana' or not self.raw_description:
             # no content in the description
-            return 'Neniu priskribo'
+            return 'Neniu priskribo.'
 
         return str(soup)
 
