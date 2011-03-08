@@ -24,14 +24,15 @@ def compare_esperanto_strings(x_mixed_case, y_mixed_case):
     # ' ' is first in the alphabet so 'a b' comes before 'ab'
     # '-' is second so that affixes come first
 
-    alphabet = [u' ', u'-', u'a', u'A', u'b', u'B', u'c', u'C', u'ĉ', u'Ĉ',
+    alphabet = [u' ', u'-', u'0', u'1', u'2', u'3', u'4', u'5', u'6', u'7',
+                u'8', u'9', u'a', u'A', u'b', u'B', u'c', u'C', u'ĉ', u'Ĉ',
                 u'd', u'D', u'e', u'E', u'f', u'F', u'g', u'G', u'ĝ', u'Ĝ',
                 u'h', u'H', u'ĥ', u'Ĥ', u'i', u'I', u'j', u'J', u'ĵ', u'Ĵ',
                 u'k', u'K', u'l', u'L', u'm', u'M', u'n', u'N', u'o', u'O',
                 u'p', u'P', u'q', u'Q', u'r', u'R', u's', u'S', u'ŝ', u'Ŝ',
                 u't', u'T', u'u', u'U', u'ŭ', u'Ŭ', u'v', u'V', u'w', u'W',
                 u'x', u'X', u'y', u'Y', u'z', u'Z']
-    
+
     for i in range(min(len(x),len(y))):
         try:
             if alphabet.index(x[i]) < alphabet.index(y[i]):
