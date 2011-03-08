@@ -99,6 +99,12 @@ class Episode(models.Model):
     def __unicode__(self):
         return "%s (%s)" % (self.title, self.podcast.name)
 
+    def get_pretty_title(self):
+        if self.title == 'Untitled':
+            return 'Sentitolo'
+        else:
+            return self.title
+
     def get_pretty_description(self):
         # already sanitised by feedparser, but we want to do some beautifying
         def strip_inline_styles(soup):

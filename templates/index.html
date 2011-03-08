@@ -13,7 +13,7 @@
 {% for episode, attachments in episodes.object_list %}
 <div class='post hentry uncustomized-post-template'>
 	<h3 class='post-title entry-title'>
-		{{ episode.title }}
+		{{ episode.get_pretty_title }}
 	</h3>
 
 	<div class='post-footer'>
