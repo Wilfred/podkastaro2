@@ -41,6 +41,9 @@ def index(request):
     return render_to_response('index.html', template_vars,
                               RequestContext(request))
 
+def about(request):
+    return render_to_response('about.html', {}, RequestContext(request))
+
 
 def view_podcast(request, podcast_name):
     podcast = Podcast.objects.get_by_slug(podcast_name)
