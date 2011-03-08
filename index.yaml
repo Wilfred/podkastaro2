@@ -29,8 +29,18 @@ indexes:
 - kind: main_episode
   properties:
   - name: podcast_id
+  - name: podcast
+
+- kind: main_episode
+  properties:
+  - name: podcast_id
   - name: time
     direction: desc
+
+- kind: main_episode
+  properties:
+  - name: podcast_id
+  - name: title
 
 - kind: main_multimediafile
   properties:
