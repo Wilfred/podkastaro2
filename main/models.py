@@ -132,8 +132,11 @@ class Episode(models.Model):
 
         if self.podcast.name == u'Voĉoj el Japanio':
             remove_posterous_junk(soup)
-        if self.podcast.name == 'Varsovia Vento':
+        elif self.podcast.name == 'Varsovia Vento':
             remove_varsovia_junk(soup)
+        elif self.podcast.name == 'Radio Vatikana' or not self.raw_description:
+            # no content in the description
+            return 'Neniu priskribo'
 
         return str(soup)
 
