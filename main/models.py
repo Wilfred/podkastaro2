@@ -59,9 +59,9 @@ class RssFeed(models.Model):
             else:
                 # fortunately very rare that podcasts don't have dates, but can happen
                 # we choose today, but log the error for the admin check
-                logging.error('Episode %s (from %s) had no time, assuming today.' \
+                logging.error('Episode %s (from %s) had no time, skipping as we already have it.' \
                                   % (title, self.podcast.name))
-                time = datetime.now()
+                continue
 
             # create or update episode
             try:
