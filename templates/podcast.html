@@ -4,22 +4,13 @@
 {% block episodes %}
 
 {# podcast intro #}
-<div class="description document">
+<div class="podcast_description">
 	<div>&nbsp;</div>
         <div class="dochead">
-                <span class="dhead">{{ podcast.name }}</span>
+                <h3><a href="{{ podcast.website }}">{{ podcast.name }}</a></h3>
 	</div>
 	<div class="dcontent">
-		{{ podcast.description }}
-
-		<div>&nbsp;</div>
-
-		<div class="bubble" align="right">
-    			<span><a href="{{ podcast.website }}">Retejo</a></span>
-		</div>
-
-                <div style="clear:both;"></div>
-
+		<p>{{ podcast.description }}</p>
 	</div>
 
 </div>

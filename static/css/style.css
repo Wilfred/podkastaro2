@@ -439,3 +439,12 @@ margin-left:335px;
 padding-left:20px;
 text-align:left;
 }
+.podcast_description {
+background:#EEEEEE;
+margin: 1em 20px;
+padding: 10px;
+}
+.podcast_description h3 {
+margin: 0;
+margin-bottom: 10px;
+}
