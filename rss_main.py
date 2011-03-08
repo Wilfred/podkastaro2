@@ -17,13 +17,8 @@ podcasts = [('http://www2.polskieradio.pl/podcast/39/podcast.xml', 'Pola Radio')
             ('http://www.panamaradio.org/podkastoj/rss.xml', 'Panama Radio'),
             ("http://feeds.feedburner.com/vej", u'Voĉoj el Japanio')]
 
-feed = libs.feedparser.parse(podcasts[4][0])
+feed = libs.feedparser.parse(podcasts[-1][0])
 
-for entry in feed['entries']:
-    title = entry['title'].encode('utf-8')
-    summary = entry['summary'].encode('utf-8')
-    attachments = entry.get('links', [])
-
-    print (title + '\n')
-    print (summary + '\n')
-    print (str(attachments) + '\n\n')
+first_entry = feed['entries'][0]
+for key in first_entry:
+    print "%s: %s\n" % (key.encode('utf-8'), unicode(first_entry[key]).encode('utf-8'))
