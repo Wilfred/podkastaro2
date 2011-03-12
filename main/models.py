@@ -134,7 +134,7 @@ class Episode(models.Model):
 
         strip_inline_styles(soup)
 
-        if self.podcast.name == u'Voĉoj el Japanio':
+        if self.podcast.name in [u'Voĉoj el Japanio', 'Pola Radio']:
             remove_posterous_junk(soup)
         elif self.podcast.name == 'Varsovia Vento':
             remove_varsovia_junk(soup)
