@@ -3,6 +3,7 @@ from django.shortcuts import render_to_response
 from django.template import RequestContext
 from django.http import HttpResponse
 from django.core.paginator import Paginator, InvalidPage, EmptyPage
+from google.appengine.api.taskqueue import Task
 
 from models import Podcast, RssFeed, Episode, MultimediaFile
 
@@ -63,9 +64,15 @@ def view_podcast(request, podcast_name):
                               RequestContext(request))
 
 def check_feeds(request):
-    feeds = RssFeed.objects.all()
+    for feed in RssFeed.objects.all():
+        Task(url='/cron/check_feed/%d' % feed.id).add()
 
-    for feed in feeds:
-        feed.update_episodes()
+    return HttpResponse('Started Tasks.')
 
-    return HttpResponse('saved.')
+def check_feed(request, feed_id):
+    feed = RssFeed.objects.get(id=feed_id)
+    feed.update_episodes()
+
+    # we have to return something, even though this is only called by
+    # a Task Queue
+    return HttpResponse('Updated one RSS feed.')
