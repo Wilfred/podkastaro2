@@ -371,12 +371,7 @@ display:inline;
 }
 .homebtn a {
 background:#CC0000 none repeat scroll 0 0;
-color:#F2F2F1;
-font-family:arial;
-font-size:12px;
-font-weight:bold;
-letter-spacing:0;
-padding:11px 50px 9px;
+color:#F2F2F1!important;
 }
 .homebtn a:hover {
 background:#CC0000 none repeat scroll 0 0;
