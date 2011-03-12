@@ -65,7 +65,7 @@ def view_podcast(request, podcast_name):
 
 def check_feeds(request):
     for feed in RssFeed.objects.all():
-        Task(url='/cron/check_feed/%d' % feed.id).add()
+        Task(url='/cron/check_feed/%d' % feed.id).add(queue_name='rss-update')
 
     return HttpResponse('Started Tasks.')
 

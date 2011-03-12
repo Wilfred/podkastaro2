@@ -1,0 +1,8 @@
+queue:
+# default queue, not used
+- name: default
+  rate: 5/s
+# to maximise frontend performance, we don't allow more than one at once
+- name: rss-update
+  rate: 1/s
+  max_concurrent_requests: 1
