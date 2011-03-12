@@ -45,3 +45,20 @@
 {% endfor %}
 
 {% endblock %}
+
+{% block page_buttons %}
+
+<ul class='navigation'>
+
+{% if episodes.has_next %}
+<li class='navitem'><a href='?paĝo={{ episodes.next_page_number }}'>Pli malnovaj</a></li>
+{% endif %}
+
+{% if episodes.has_previous %}
+<li class='navitem'><a href='?paĝo={{ episodes.previous_page_number }}'>Pli novaj</a></li>
+{% endif %}
+
+</ul>
+
+{% endblock %}
+

@@ -355,6 +355,10 @@ line-height:35px;
 margin-left:335px;
 text-align:left;
 }
+#back-forward {
+background:#F2F2F1 none repeat scroll 0 0;
+line-height:35px;
+}
 .navigation {
 margin:0;
 padding:0;
