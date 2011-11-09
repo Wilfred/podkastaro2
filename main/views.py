@@ -3,9 +3,15 @@ from django.shortcuts import render_to_response
 from django.template import RequestContext
 from django.http import HttpResponse
 from django.core.paginator import Paginator, InvalidPage, EmptyPage
+from django.views.decorators.cache import cache_page
+
+
 from google.appengine.api.taskqueue import Task
 
 from models import Podcast, RssFeed, Episode, MultimediaFile
+
+SIX_HOURS = 60 * 60 * 6
+ONE_WEEK = 60 * 60 * 24 * 7
 
 
 def get_paginated_content(request, content):
@@ -26,6 +32,7 @@ def get_paginated_content(request, content):
     return page_of_content
 
 
+@cache_page(SIX_HOURS)
 def index(request):
     episodes = Episode.objects.all()
 
@@ -42,10 +49,13 @@ def index(request):
     return render_to_response('index.html', template_vars,
                               RequestContext(request))
 
+
+@cache_page(ONE_WEEK)
 def about(request):
     return render_to_response('about.html', {}, RequestContext(request))
 
 
+@cache_page(SIX_HOURS)
 def view_podcast(request, podcast_name):
     podcast = Podcast.objects.get_by_slug(podcast_name)
     episodes = Episode.objects.filter(podcast=podcast)
