@@ -1,5 +1,4 @@
-Podkastaro 2 is a port of the original PHP Podkastaro to Django
-non-rel on App Engine.
+Podkastaro 2 is a port of the original PHP Podkastaro to Django.
 
 Podkastaro is a site that aggregates every Esperanto-language podcast
 that I'm aware of. It uses feedparser to fetch the feeds and
