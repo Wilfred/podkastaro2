@@ -15,4 +15,7 @@ urlpatterns = patterns('',
 
     ('^cron/check_feeds', 'main.views.check_feeds'),
     ('^cron/check_feed/(?P<feed_id>\d+)', 'main.views.check_feed'),
+
+    (r'^static/(?P<path>.*)$', 'django.views.static.serve',
+     {'document_root': 'static/'}),
 )
