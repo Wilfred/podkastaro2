@@ -71,16 +71,15 @@ def view_podcast(request, podcast_name):
     return render_to_response('podcast.html', template_vars,
                               RequestContext(request))
 
-# def check_feeds(request):
-#     for feed in RssFeed.objects.all():
-#         Task(url='/cron/check_feed/%d' % feed.id).add(queue_name='rss-update')
+def check_feeds(request):
+    for feed in RssFeed.objects.all():
+        # FIXME: we are hitting the DB twice for no good reason
+        check_feed(request, feed.id)
 
-#     return HttpResponse('Started Tasks.')
+    return HttpResponse('Checked all feeds.')
 
 def check_feed(request, feed_id):
     feed = RssFeed.objects.get(id=feed_id)
     feed.update_episodes()
 
-    # we have to return something, even though this is only called by
-    # a Task Queue
     return HttpResponse('Updated one RSS feed.')
