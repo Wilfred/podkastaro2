@@ -18,3 +18,7 @@ and Klodian.
 * Automatically generated list of all our RSS feeds for those who wish
   to use other RSS apps
 * Use bleach to sanitise HTML
+* Protect cron/ URLs from external use
+* Move to Django 1.4
+* Use better names for Django app
+* Explore using the built-in MP3 player in browsers that don't support flash
