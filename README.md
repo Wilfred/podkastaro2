@@ -6,3 +6,15 @@ BeautifulSoup to remove unwanted text in the descriptions.
 
 The styling is a port of 2Plus, a blogger template developed by Dante
 and Klodian.
+
+### Development
+
+    $ pip install -r requirements.txt
+    $ python manage.py syncdb
+    $ python manage.py runserver
+
+### Future work
+
+* Automatically generated list of all our RSS feeds for those who wish
+  to use other RSS apps
+* Use bleach to sanitise HTML
