@@ -6,8 +6,6 @@ from django.core.paginator import Paginator, InvalidPage, EmptyPage
 from django.views.decorators.cache import cache_page
 
 
-from google.appengine.api.taskqueue import Task
-
 from models import Podcast, RssFeed, Episode, MultimediaFile
 
 SIX_HOURS = 60 * 60 * 6
@@ -73,11 +71,11 @@ def view_podcast(request, podcast_name):
     return render_to_response('podcast.html', template_vars,
                               RequestContext(request))
 
-def check_feeds(request):
-    for feed in RssFeed.objects.all():
-        Task(url='/cron/check_feed/%d' % feed.id).add(queue_name='rss-update')
+# def check_feeds(request):
+#     for feed in RssFeed.objects.all():
+#         Task(url='/cron/check_feed/%d' % feed.id).add(queue_name='rss-update')
 
-    return HttpResponse('Started Tasks.')
+#     return HttpResponse('Started Tasks.')
 
 def check_feed(request, feed_id):
     feed = RssFeed.objects.get(id=feed_id)
