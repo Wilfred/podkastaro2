@@ -5,9 +5,9 @@ import calendar
 import logging
 import re
 
-import libs.feedparser
+import feedparser
 from templatetags.eo_slugify import eo_slugify
-from libs.BeautifulSoup import BeautifulSoup
+from BeautifulSoup import BeautifulSoup
 
 class PodcastManager(models.Manager):
     def get_by_slug(self, slug):
@@ -41,7 +41,7 @@ class RssFeed(models.Model):
         return "%s %s" % (self.podcast.name, self.url)
 
     def update_episodes(self):
-        rss_feed = libs.feedparser.parse(self.url)
+        rss_feed = feedparser.parse(self.url)
 
         for entry in rss_feed['entries']:
             title = entry['title']
