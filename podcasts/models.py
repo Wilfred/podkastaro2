@@ -35,7 +35,7 @@ class Podcast(models.Model):
 class RssFeed(models.Model):
     # one podcast can have several RSS Feeds
     podcast = models.ForeignKey(Podcast)
-    url = models.URLField()
+    url = models.URLField(unique=True)
 
     def __unicode__(self):
         return "%s %s" % (self.podcast.name, self.url)
