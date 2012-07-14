@@ -82,7 +82,7 @@ ROOT_URLCONF = 'urls'
 TEMPLATE_DIRS = (os.path.join(os.path.dirname(__file__), 'templates'),)
 
 TEMPLATE_CONTEXT_PROCESSORS = (
-    'main.context_processors.list_podcasts',
+    'podcasts.context_processors.list_podcasts',
     'django.contrib.auth.context_processors.auth',
     'django.core.context_processors.request',
     'django.core.context_processors.media',
@@ -90,7 +90,7 @@ TEMPLATE_CONTEXT_PROCESSORS = (
 
 
 INSTALLED_APPS = (
-    'main',
+    'podcasts',
     
     'django.contrib.auth',
     'django.contrib.contenttypes',

@@ -1,4 +1,4 @@
-from main.models import Podcast, RssFeed, Episode, MultimediaFile
+from .models import Podcast, RssFeed, Episode, MultimediaFile
 from django.contrib import admin
 
 for cls in [MultimediaFile]:
