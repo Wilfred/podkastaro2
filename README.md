@@ -22,3 +22,4 @@ and Klodian.
 * Move to Django 1.4
 * Use better names for Django app
 * Explore using the built-in MP3 player in browsers that don't support flash
+* Unit tests
