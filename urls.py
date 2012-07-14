@@ -8,9 +8,9 @@ handler500 = 'djangotoolbox.errorviews.server_error'
 urlpatterns = patterns('',
     ('^admin/', include(admin.site.urls)),
 
-    ('^$', 'podcasts.views.index'),
-    ('^pri-podkastaro$', 'podcasts.views.about'),
-    ('^podkasto/(?P<podcast_name>.+)', 'podcasts.views.view_podcast'),
+    url('^$', 'podcasts.views.index', name='index'),
+    url('^pri-podkastaro$', 'podcasts.views.about', name='about'),
+    url('^podkasto/(?P<podcast_id>\d+)/(?P<podcast_name>.+)', 'podcasts.views.view_podcast', name="view_podcast"),
 
     ('^cron/check_feeds', 'podcasts.views.check_feeds'),
 
