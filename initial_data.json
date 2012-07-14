@@ -1,0 +1,19 @@
+[
+    {
+        "pk": 1, 
+        "model": "podcasts.podcast", 
+        "fields": {
+            "website": "http://viavento.republika.pl/", 
+            "name": "Varsovia Vento", 
+            "description": "Varsovia Vento estas junulara esperanta klubo en Polujo. Ili elsendas podkastojn kiu ofte temas pri muziko."
+        }
+    }, 
+    {
+        "pk": 1, 
+        "model": "podcasts.rssfeed", 
+        "fields": {
+            "url": "http://www.podkasto.net/feed/", 
+            "podcast": 1
+        }
+    }
+]
