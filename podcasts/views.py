@@ -8,9 +8,6 @@ from django.views.decorators.cache import cache_page
 
 from models import Podcast, RssFeed, Episode, MultimediaFile
 
-SIX_HOURS = 60 * 60 * 6
-ONE_WEEK = 60 * 60 * 24 * 7
-
 
 def get_paginated_content(request, content):
     paginator = Paginator(content, 6) # why six? It looked good.
@@ -30,7 +27,6 @@ def get_paginated_content(request, content):
     return page_of_content
 
 
-@cache_page(SIX_HOURS)
 def index(request):
     episodes = Episode.objects.all()
 
@@ -48,12 +44,11 @@ def index(request):
                               RequestContext(request))
 
 
-@cache_page(ONE_WEEK)
 def about(request):
     return render_to_response('about.html', {}, RequestContext(request))
 
 
-@cache_page(SIX_HOURS)
+
 def view_podcast(request, podcast_id, podcast_name):
     podcast = Podcast.objects.get(id=podcast_id)
     episodes = Episode.objects.filter(podcast=podcast)
