@@ -54,8 +54,8 @@ def about(request):
 
 
 @cache_page(SIX_HOURS)
-def view_podcast(request, podcast_name):
-    podcast = Podcast.objects.get_by_slug(podcast_name)
+def view_podcast(request, podcast_id, podcast_name):
+    podcast = Podcast.objects.get(id=podcast_id)
     episodes = Episode.objects.filter(podcast=podcast)
 
     episodes_with_multimedia = []

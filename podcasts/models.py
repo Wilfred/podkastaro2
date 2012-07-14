@@ -9,28 +9,21 @@ import feedparser
 from templatetags.eo_slugify import eo_slugify
 from BeautifulSoup import BeautifulSoup
 
-class PodcastManager(models.Manager):
-    def get_by_slug(self, slug):
-        all_podcasts = self.all() # we will never have many podcasts
-
-        for podcast in all_podcasts:
-            if eo_slugify(podcast.name) == slug:
-                return podcast
-
-        raise self.model.DoesNotExist()
-
 class Podcast(models.Model):
     name = models.CharField(max_length=400)
     description = models.TextField()
     website = models.URLField()
 
-    objects = PodcastManager()
-
     class Meta:
         ordering = ['name']
 
+    @property
+    def slug_name(self):
+        return eo_slugify(self.name)
+
     def __unicode__(self):
         return self.name
+
 
 class RssFeed(models.Model):
     # one podcast can have several RSS Feeds
