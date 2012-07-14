@@ -1,5 +1,23 @@
 [
     {
+        "pk": 3, 
+        "model": "podcasts.podcast", 
+        "fields": {
+            "website": "http://parolumondo.com/", 
+            "name": "Parolu Mondo", 
+            "description": "Parolu Mondo estas radia programo el Brazilo. \u011ci elsandas unufoje semajne."
+        }
+    }, 
+    {
+        "pk": 2, 
+        "model": "podcasts.podcast", 
+        "fields": {
+            "website": "http://polskieradio.pl/eo/", 
+            "name": "Pola Radio", 
+            "description": "Pola Radio estas la publika radiofonia kompanio de Polujo kaj \u011di havas esperantajn elsendojn. \u011ci temas \u0109efe pri pola nova\u0135oj, monda nova\u0135oj kaj intervjuoj. La prezentistoj estas Barbara kaj Gaby."
+        }
+    }, 
+    {
         "pk": 1, 
         "model": "podcasts.podcast", 
         "fields": {
@@ -14,6 +32,14 @@
         "fields": {
             "url": "http://www.podkasto.net/feed/", 
             "podcast": 1
+        }
+    }, 
+    {
+        "pk": 2, 
+        "model": "podcasts.rssfeed", 
+        "fields": {
+            "url": "http://www2.polskieradio.pl/podcast/39/podcast.xml", 
+            "podcast": 2
         }
     }
 ]
