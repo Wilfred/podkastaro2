@@ -73,13 +73,6 @@ def view_podcast(request, podcast_id, podcast_name):
 
 def check_feeds(request):
     for feed in RssFeed.objects.all():
-        # FIXME: we are hitting the DB twice for no good reason
-        check_feed(request, feed.id)
+        feed.update_episodes()
 
-    return HttpResponse('Checked all feeds.')
-
-def check_feed(request, feed_id):
-    feed = RssFeed.objects.get(id=feed_id)
-    feed.update_episodes()
-
-    return HttpResponse('Updated one RSS feed.')
+    return HttpResponse('Updated all feeds.')
