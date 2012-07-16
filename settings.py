@@ -101,3 +101,9 @@ INSTALLED_APPS = (
 
     'south',
 )
+
+if not DEBUG:
+    try:
+        from live_settings import *
+    except ImportError:
+        pass
