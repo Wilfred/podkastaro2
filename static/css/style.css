@@ -22,17 +22,9 @@ a {
     outline-color:-moz-use-text-color;
     outline-style:none;
     outline-width:medium;
+    color:#CC0000;
 }
 a:link {
-    color:#CC0000;
-    text-decoration:none;
-}
-a:visited {
-    color:#CC0000;
-    text-decoration:none;
-}
-a:hover {
-    color:#CC0000;
     text-decoration:none;
 }
 a img {
@@ -50,42 +42,27 @@ a img {
     margin-right:auto;
 }
 #header {
-    color:white;
     margin:5px;
     text-align:left;
-}
-#header h1 {
-    color:#FFFFFF;
-    display:block;
+    color:white;
+
     font-family:arial;
-    font-size:58px;
-    font-size-adjust:none;
-    font-stretch:normal;
-    font-style:normal;
-    font-variant:normal;
-    font-weight:bold;
-    letter-spacing:-4px;
-    line-height:normal;
-    margin-bottom:0;
-    margin-top:45px;
-}
-#header a {
-    color:white;
-    text-decoration:none;
-}
-#header a:hover {
-    color:white;
-}
-#header .description {
-    color:white;
-    font-family:arial;
-    font-size:15px;
     font-size-adjust:none;
     font-stretch:normal;
     font-style:normal;
     font-variant:normal;
     font-weight:normal;
     line-height:normal;
+}
+#header h1 {
+    display:block;
+    font-size:58px;
+    letter-spacing:-4px;
+    margin-bottom:0;
+    margin-top:45px;
+}
+#header .description {
+    font-size:15px;
     margin:-5px 0 0;
 }
 #header img {
