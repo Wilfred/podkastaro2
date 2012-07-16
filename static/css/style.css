@@ -54,6 +54,9 @@ a img {
     font-weight:normal;
     line-height:normal;
 }
+#header *{
+    color:white;
+}
 #header h1 {
     display:block;
     font-size:58px;
