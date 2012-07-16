@@ -2,4 +2,5 @@ BeautifulSoup==3.2.1
 Django==1.2
 South==0.7.5
 feedparser==5.1.2
+psycopg2==2.4.1
 wsgiref==0.1.2
