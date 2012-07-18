@@ -1,5 +1,5 @@
 from fabric.operations import put, local, run
-from fabric.context_managers import cd, prefix
+from fabric.context_managers import cd, prefix, lcd
 
 
 def export():
@@ -9,13 +9,18 @@ def export():
     """
     local('rm -rf /tmp/podkastaro')
     local("git checkout-index -a -f --prefix=/tmp/podkastaro/")
+    local('cp live_settings.py /tmp/podkastaro')
+    with lcd('/tmp'):
+        local('rm -f podkastaro.tar.gz')
+        local('tar -zcf podkastaro.tar.gz podkastaro')
+        local('rm -rf podkastaro')
 
 
 def upload():
     run('mv ~/webapps/podkastaro/podkastaro ~/webapps/podkastaro/podkastaro_previous')
-    run('mkdir -p ~/webapps/podkastaro/podkastaro')
-    put('/tmp/podkastaro', '~/webapps/podkastaro') # note this creates ~/webapps/podkastaro/podkastaro
-    put('live_settings.py', '~/webapps/podkastaro/podkastaro')
+    put('/tmp/podkastaro.tar.gz', '~/webapps/podkastaro/podkastaro.tar.gz')
+    run('tar -xzf ~/webapps/podkastaro/podkastaro.tar.gz --directory ~/webapps/podkastaro')
+    run('rm ~/webapps/podkastaro/podkastaro.tar.gz')
 
 
 def update_dependencies():
