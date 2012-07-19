@@ -11,7 +11,4 @@ urlpatterns = patterns('',
     url('^p/(?P<podcast_id>\d+)/(?P<podcast_name>.+)', 'podcasts.views.view_podcast', name="view_podcast"),
 
     ('^cron/check_feeds', 'podcasts.views.check_feeds'),
-
-    (r'^static/(?P<path>.*)$', 'django.views.static.serve',
-     {'document_root': 'static/'}),
 )
