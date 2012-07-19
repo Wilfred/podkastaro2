@@ -25,6 +25,12 @@ def upload():
     run('rm ~/webapps/podkastaro/podkastaro.tar.gz')
 
 
+def upload_static():
+    # TODO: tar.gz as above, with backups
+    run('rm -r ~/webapps/podkastaro_static/*')
+    put('static/*', '~/webapps/podkastaro_static')
+
+
 def update_dependencies():
     with prefix(". ~/.virtualenvs/podkastaro/bin/activate"):
         run("pip install -r ~/webapps/podkastaro/podkastaro/requirements.txt")
@@ -61,6 +67,8 @@ def deploy():
 
     export()
     upload()
+
+    upload_static()
 
     stop()
 
