@@ -17,6 +17,8 @@ def export():
 
 
 def upload():
+    # TODO: create backup of n previous versions
+    run('rm -rf ~/webapps/podkastaro/podkastaro_previous')
     run('mv ~/webapps/podkastaro/podkastaro ~/webapps/podkastaro/podkastaro_previous')
     put('/tmp/podkastaro.tar.gz', '~/webapps/podkastaro/podkastaro.tar.gz')
     run('tar -xzf ~/webapps/podkastaro/podkastaro.tar.gz --directory ~/webapps/podkastaro')
